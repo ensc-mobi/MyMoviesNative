@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
   },
   movieContainer: {
     flex: 1,
-    marginHorizontal: 10
+    marginHorizontal: 10,
+    marginTop: 10
   }
 });
 
@@ -23,7 +24,7 @@ export default class Component extends React.Component {
   }
 
   componentDidMount() {
-    this.props.movieStore.init();
+    this.props.movieStore.fetchAll();
   }
 
   render() {

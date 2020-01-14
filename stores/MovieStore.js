@@ -6,17 +6,24 @@ export default class MovieStore {
   @observable movies;
 
   constructor() {
-    this.movies = [
-      //new Movie(1, "Le Loup de Wall Street"),
-      //new Movie(2, "Parasite")
-    ];
+    this.movies = [];
   }
 
-  init() {
+  fetchAll() {
+    this.movies = [];
     getAllMovies().then(movies => {
       //console.log(movies);
-      movies.forEach(movie => {
-        console.log(movie);
+      movies.forEach(movieData => {
+        const movie = new Movie(
+          movieData.mov_id,
+          movieData.mov_title,
+          movieData.mov_description_short,
+          movieData.mov_description_long,
+          movieData.mov_director,
+          movieData.mov_year,
+          movieData.mov_image
+        );
+        this.movies = [movie, ...this.movies];
       });
     });
   }
