@@ -1,12 +1,32 @@
 import React from "react";
-import MainView from "./components/MainView";
-import MovieStore from "./stores/MovieStore";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./components/HomeScreen";
 
-// Create a stateless function component rather than a class-based one
-const App = () => {
-  const movieStore = new MovieStore();
+const MainStack = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    }
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#f4511e"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      }
+    }
+  }
+);
 
-  return <MainView movieStore={movieStore} />;
-};
+const AppContainer = createAppContainer(MainStack);
 
-export default App;
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}

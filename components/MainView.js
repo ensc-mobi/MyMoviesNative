@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { observer } from "mobx-react";
-import Header from "./Header";
 import MovieItem from "./MovieItem";
 
 const styles = StyleSheet.create({
@@ -28,10 +27,8 @@ export default class Component extends React.Component {
   }
 
   render() {
-    const title = "MyMoviesNative";
     return (
       <View style={styles.container}>
-        <Header title={title}></Header>
         <FlatList
           style={styles.movieContainer}
           data={this.props.movieStore.movies}
