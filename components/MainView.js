@@ -22,6 +22,10 @@ export default class Component extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.movieStore.init();
+  }
+
   render() {
     const title = "MyMoviesNative";
     return (
