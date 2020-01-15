@@ -2,11 +2,15 @@ import React from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./components/HomeScreen";
+import DetailsScreen from "./components/DetailsScreen";
 
 const MainStack = createStackNavigator(
   {
     Home: {
       screen: HomeScreen
+    },
+    Details: {
+      screen: DetailsScreen
     }
   },
   {

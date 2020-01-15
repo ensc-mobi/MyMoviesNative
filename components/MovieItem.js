@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { observer } from "mobx-react";
 
 const styles = StyleSheet.create({
@@ -17,13 +17,22 @@ const styles = StyleSheet.create({
 @observer
 export default class MovieItem extends React.Component {
   render() {
-    const { title, year } = this.props.movie;
+    const { movie } = this.props;
+    const { navigation } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {title} ({year})
-        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Details", {
+              movie: movie
+            });
+          }}
+        >
+          <Text style={styles.text}>
+            {movie.title} ({movie.year})
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

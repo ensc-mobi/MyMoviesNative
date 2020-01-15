@@ -17,23 +17,22 @@ const styles = StyleSheet.create({
 });
 
 @observer
-export default class Component extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class MainView extends React.Component {
   componentDidMount() {
     this.props.movieStore.fetchAll();
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <FlatList
           style={styles.movieContainer}
           data={this.props.movieStore.movies}
           keyExtractor={movie => movie.id.toString()}
-          renderItem={({ item }) => <MovieItem movie={item} />}
+          renderItem={({ item }) => (
+            <MovieItem movie={item} navigation={navigation} />
+          )}
         />
       </View>
     );
