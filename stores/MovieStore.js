@@ -12,7 +12,6 @@ export default class MovieStore {
   fetchAll() {
     this.movies = [];
     getAllMovies().then(movies => {
-      //console.log(movies);
       movies.forEach(movieData => {
         const movie = new Movie(
           movieData.mov_id,
